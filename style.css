@@ -486,6 +486,13 @@ section { padding: 100px 72px; }
   display: block;
   transition: opacity 0.25s ease-in-out;
 }
+#resume-links-overlay a {
+  transition: background-color 0.2s ease;
+  border-radius: 2px;
+}
+#resume-links-overlay a:hover {
+  background-color: rgba(201, 168, 76, 0.15); /* Subtle gold tint on hover */
+}
 .resume-controls {
   display: flex;
   justify-content: space-between;
