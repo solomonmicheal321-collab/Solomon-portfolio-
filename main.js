@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── RESUME SLIDER PAGINATION ───────────────────────────────
   const resumeImages = [
-    'assests/Solomon_J_ATS_Final_1.png',
-    'assests/Solomon_J_ATS_Final_2.png',
-    'assests/Solomon_J_ATS_Final_3.png'
+    'assests/Solomon_J_CV_1.png',
+    'assests/Solomon_J_CV_2.png',
+    'assests/Solomon_J_CV_3.png'
   ];
   let currentResumePage = 1;
   const totalResumePages = resumeImages.length;
@@ -152,11 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadedImages.push(img);
   }
 
+  const overlayEl = document.getElementById('resume-links-overlay');
+
   function updateResumeView() {
     if (!resumeImgEl) return;
     
     // Add brief fade-out effect for a premium feel
     resumeImgEl.style.opacity = '0';
+    if (overlayEl) overlayEl.style.opacity = '0';
     
     setTimeout(() => {
       resumeImgEl.src = resumeImages[currentResumePage - 1];
@@ -166,6 +169,16 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update buttons state
       btnPrev.disabled = currentResumePage === 1;
       btnNext.disabled = currentResumePage === totalResumePages;
+      
+      // Toggle overlay display and opacity
+      if (overlayEl) {
+        if (currentResumePage === 1) {
+          overlayEl.style.display = 'block';
+          setTimeout(() => { overlayEl.style.opacity = '1'; }, 50);
+        } else {
+          overlayEl.style.display = 'none';
+        }
+      }
       
       // Fade back in
       resumeImgEl.style.opacity = '1';
